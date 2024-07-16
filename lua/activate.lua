@@ -17,6 +17,5 @@ M.lspsaga = __Dotenv.env("PLUGIN_CORE_LSPSAGA", "boolean") or true
 -- M.mason = __Dotenv.env("PLUGIN_CORE_MASON", "boolean") or true
 -- M.gitsigns = __Dotenv.env("PLUGIN_CORE_GITSIGNS", "boolean") or true
 -- M.which_key = __Dotenv.env("PLUGIN_CORE_WHICH_KEY", "boolean") or true
--- M.lazydev = __Dotenv.env("PLUGIN_CORE_LAZYDEV", "boolean") or true
 
 return M

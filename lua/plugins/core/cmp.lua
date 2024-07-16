@@ -31,6 +31,19 @@ return function(activate)
             require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
           end,
         },
+        {
+          "folke/lazydev.nvim",
+          ft = "lua", -- only load on lua files
+          dependencies = { "Bilal2453/luvit-meta", lazy = true },
+          opts = {
+            library = {
+              -- See the configuration section for more details
+              -- Load luvit types when the `vim.uv` word is found
+              { path = "luvit-meta/library", words = { "vim%.uv" } },
+              { path = "lazy.nvim",          words = { "LazyVim" } },
+            },
+          },
+        },
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
@@ -51,9 +64,14 @@ return function(activate)
           { name = "nvim_lua" },
           { name = "cmdline" },
           { name = "emoji" },
+          {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          }
         }
-
-        return config
+      end,
+      config = function(_, opts)
+        require("cmp").setup(opts)
       end,
     }
   else
