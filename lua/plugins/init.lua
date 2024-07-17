@@ -21,4 +21,5 @@ return {
   require "plugins.ui.noice" (activate.noice),
   require "plugins.ui.dressing" (activate.dressing),
   require "plugins.ui.indent_blankline" (activate.indent_blankline),
+  require "plugins.ui.flash" (activate.flash),
 }

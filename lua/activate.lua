@@ -21,5 +21,6 @@ M.nvim_tree = __Dotenv.env("PLUGIN_UI_NVIMTREE", "boolean")
 M.noice = __Dotenv.env("PLUGIN_UI_NOICE", "boolean")
 M.dressing = __Dotenv.env("PLUGIN_UI_DRESSING", "boolean")
 M.indent_blankline = __Dotenv.env("PLUGIN_UI_INDENT_BLANKLINE", "boolean")
+M.flash = __Dotenv.env("PLUGIN_UI_FLASH", "boolean")
 
 return M
