@@ -11,6 +11,9 @@ return function(activate)
       config = function()
         require("plugins.core.configs.conform")
       end,
+      keys = function()
+        require "plugins.core.mappings.conform"
+      end,
     }
   else
     plugin = {

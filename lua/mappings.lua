@@ -18,22 +18,6 @@ map("n", "<leader>-", "<C-x>", { desc = "decrement number" })
 map("n", "<leader>enn", __Utils.cmd "set nu!", { desc = "editor linenumber" })
 map("n", "<leader>enr", __Utils.cmd "set rnu!", { desc = "editor relative linenumber" })
 
--- nvimtree
-map("n", "<leader>ee", __Utils.cmd "NvimTreeToggle", { desc = "nvimtree toggle file explorer" })
-map("n", "<leader>ef", __Utils.cmd "NvimTreeFocus", { desc = "nvimtree focus file explorer" })
-map("n", "<leader>es", __Utils.cmd "NvimTreeFindFileToggle", { desc = "nvimtree toggle file explorer on current file" })
-map("n", "<leader>ec", __Utils.cmd "NvimTreeCollapse", { desc = "nvimtree collapse file explorer" })
-map("n", "<leader>er", __Utils.cmd "NvimTreeRefresh", { desc = "nvimtree refresh file explorer" })
-
--- file formatting
-map({ "n", "v" }, "<leader>cf", function()
-  require("conform").format {
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 500,
-  }
-end, { desc = "format file" })
-
 -- save file
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 

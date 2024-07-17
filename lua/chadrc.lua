@@ -14,6 +14,12 @@ M.ui = {
   theme = env.theme,
   transparency = env.transparency,
 
+  cmp = {
+    icons = true,
+    lspkind_text = true,
+    style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
+  },
+
   nvdash = {
     load_on_startup = true,
     header = {
