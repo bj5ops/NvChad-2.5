@@ -21,7 +21,6 @@ M.base_30 = {
   line = "#2A373C", -- for lines like vertsplit
   green = "#A3BE8C",
   vibrant_green = "#afca98",
-  --   blue = "#7797b7",
   blue = "#16A085",
   nord_blue = "#81A1C1",
   yellow = "#EBCB8B",

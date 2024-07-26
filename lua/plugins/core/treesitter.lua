@@ -10,14 +10,118 @@ return function(activate)
           "nvim-treesitter/nvim-treesitter-textobjects",
         },
         {
+          "Wansmer/treesj",
+          opts = { use_default_keymaps = false },
+          keys = function()
+            local __Utils = require "utils"
+            local map = vim.keymap.set
+
+            map("n", "<leader>cj", __Utils.cmd "TSJToggle", { desc = "Join/split code block" })
+          end,
+        },
+        {
           "HiPhish/rainbow-delimiters.nvim",
           config = function()
-            require("plugins.core.configs.rainbow_delimiters")
+            -- This module contains a number of default definitions
+            local rainbow_delimiters = require "rainbow-delimiters"
+
+            ---@class rainbow_delimiters.config
+            vim.g.rainbow_delimiters = {
+              strategy = {
+                [""] = rainbow_delimiters.strategy["global"],
+                vim = rainbow_delimiters.strategy["local"],
+              },
+              query = {
+                [""] = "rainbow-delimiters",
+                lua = "rainbow-blocks",
+              },
+              priority = {
+                [""] = 110,
+                lua = 210,
+              },
+              highlight = {
+                "RainbowDelimiterRed",
+                "RainbowDelimiterYellow",
+                "RainbowDelimiterBlue",
+                "RainbowDelimiterOrange",
+                "RainbowDelimiterGreen",
+                "RainbowDelimiterViolet",
+                "RainbowDelimiterCyan",
+              },
+            }
           end,
-        }
+        },
       },
       config = function()
-        require("plugins.core.configs.treesitter")
+        local options = {
+          ensure_installed = {
+            "bash",
+            "fish",
+            "lua",
+            "luadoc",
+            "markdown",
+            "printf",
+            "toml",
+            "vim",
+            "vimdoc",
+            "yaml",
+          },
+
+          highlight = {
+            enable = true,
+            use_languagetree = true,
+          },
+
+          indent = { enable = true },
+
+          textobjects = {
+            select = {
+              enable = true,
+
+              -- Automatically jump forward to textobj, similar to targets.vim
+              lookahead = true,
+
+              keymaps = {
+                -- You can use the capture groups defined in textobjects.scm
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+                ["ii"] = "@conditional.inner",
+                ["ai"] = "@conditional.outer",
+                ["il"] = "@loop.inner",
+                ["al"] = "@loop.outer",
+                ["at"] = "@comment.outer",
+              },
+            },
+            -- You can choose the select mode (default is charwise 'v')
+            --
+            -- Can also be a function which gets passed a table with the keys
+            -- * query_string: eg '@function.inner'
+            -- * method: eg 'v' or 'o'
+            -- and should return the mode ('v', 'V', or '<c-v>') or a table
+            -- mapping query_strings to modes.
+            selection_modes = {
+              ["@parameter.outer"] = "v", -- charwise
+              ["@function.outerii"] = "V", -- linewise
+              ["@class.outer"] = "<c-v>", -- blockwise
+            },
+            -- If you set this to `true` (default is `false`) then any textobject is
+            -- extended to include preceding or succeeding whitespace. Succeeding
+            -- whitespace has priority in order to act similarly to eg the built-in
+            -- `ap`.
+            --
+            -- Can also be a function which gets passed a table with the keys
+            -- * query_string: eg '@function.inner'
+            -- * selection_mode: eg 'v'
+            -- and should return true or false
+            include_surrounding_whitespace = true,
+          },
+        }
+
+        require("nvim-treesitter.configs").setup(options)
       end,
     }
   else

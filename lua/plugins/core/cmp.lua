@@ -31,6 +31,38 @@ return function(activate)
             require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
           end,
         },
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-emoji",
+        {
+          "Exafunction/codeium.nvim",
+          cmd = "Codeium",
+          build = ":Codeium Auth",
+          dependencies = {
+            "nvim-lua/plenary.nvim",
+          },
+          config = function()
+            local map = vim.keymap.set
+
+            require("codeium").setup {
+              map("i", "<C-g>", function()
+                return vim.fn["codeium#Accept"]()
+              end, { expr = true, silent = true }),
+              map("i", "<C-;>", function()
+                return vim.fn["codeium#CycleCompletions"](1)
+              end, { expr = true, silent = true }),
+              map("i", "<C-,>", function()
+                return vim.fn["codeium#CycleCompletions"](-1)
+              end, { expr = true, silent = true }),
+              map("i", "<C-x>", function()
+                return vim.fn["codeium#Clear"]()
+              end, { expr = true, silent = true }),
+            }
+          end,
+        },
         {
           "folke/lazydev.nvim",
           ft = "lua", -- only load on lua files
@@ -40,17 +72,10 @@ return function(activate)
               -- See the configuration section for more details
               -- Load luvit types when the `vim.uv` word is found
               { path = "luvit-meta/library", words = { "vim%.uv" } },
-              { path = "lazy.nvim",          words = { "LazyVim" } },
+              { path = "lazy.nvim", words = { "LazyVim" } },
             },
           },
         },
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-emoji",
-        "Exafunction/codeium.nvim",
       },
       opts = function()
         local config = require "nvchad.configs.cmp"
@@ -67,8 +92,18 @@ return function(activate)
           {
             name = "lazydev",
             group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-          }
+          },
         }
+
+        local cmp = require "cmp"
+
+        -- Setup up vim-dadbod
+        cmp.setup.filetype({ "sql" }, {
+          sources = {
+            { name = "vim-dadbod-completion" },
+            { name = "buffer" },
+          },
+        })
       end,
     }
   else

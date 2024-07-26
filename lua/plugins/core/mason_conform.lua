@@ -7,7 +7,12 @@ return function(activate)
       event = "VeryLazy",
       dependencies = { "conform.nvim" },
       config = function()
-        require("plugins.core.configs.mason_conform")
+        local mason_conform = require "mason-conform"
+
+        mason_conform.setup {
+          -- List of formatters to ignore during install
+          ignore_install = {},
+        }
       end,
     }
   else
