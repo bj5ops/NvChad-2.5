@@ -1,5 +1,8 @@
 return function(active)
-  local plugin = {}
+  local plugin = {
+    "lukas-reineke/indent-blankline.nvim",
+    enabled = false,
+  }
 
   if active then
     plugin = {
@@ -37,11 +40,6 @@ return function(active)
           scope = { char = "┊", highlight = highlight },
         }
       end,
-    }
-  else
-    plugin = {
-      "lukas-reineke/indent-blankline.nvim",
-      enabled = false,
     }
   end
 

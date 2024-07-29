@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin
+  local plugin = {
+    "williamboman/mason-lspconfig.nvim",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -35,11 +38,6 @@ return function(activate)
           automatic_installation = false,
         }
       end,
-    }
-  else
-    plugin = {
-      "williamboman/mason-lspconfig.nvim",
-      enabled = false,
     }
   end
 

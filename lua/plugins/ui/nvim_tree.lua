@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "nvim-tree/nvim-tree.lua",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -171,11 +174,6 @@ return function(activate)
         map("n", "<leader>ec", __Utils.cmd "NvimTreeCollapse", { desc = "nvimtree collapse file explorer" })
         map("n", "<leader>er", __Utils.cmd "NvimTreeRefresh", { desc = "nvimtree refresh file explorer" })
       end,
-    }
-  else
-    plugin = {
-      "nvim-tree/nvim-tree.lua",
-      enabled = false,
     }
   end
 

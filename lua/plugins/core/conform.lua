@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "stevearc/conform.nvim",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -12,10 +15,23 @@ return function(activate)
         local options = {
           formatters_by_ft = {
             bash = { "shfmt" },
+            sh = { "shfmt" },
             lua = { "stylua" },
+            html = { "prettier" },
+            css = { "prettier" },
+            scss = { "prettier" },
             json = { "prettier" },
             markdown = { "prettier" },
             yaml = { "prettier" },
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+            python = { "black" },
+            go = { "goimports" },
+            vim = { "vimls" },
+            ini = { "prettier" },
+            hcl = { "prettier" },
+            toml = { "prettier" },
+            php = { "phpcbf" },
           },
 
           format_on_save = function(bufnr)
@@ -69,11 +85,6 @@ return function(activate)
           }
         end, { desc = "format file" })
       end,
-    }
-  else
-    plugin = {
-      "stevearc/conform.nvim",
-      enabled = false,
     }
   end
 

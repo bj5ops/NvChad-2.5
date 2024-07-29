@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "nvim-telescope/telescope.nvim",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -163,11 +166,6 @@ return function(activate)
 
         return config
       end,
-    }
-  else
-    plugin = {
-      "nvim-telescope/telescope.nvim",
-      enabled = false,
     }
   end
 

@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "nvim-treesitter/nvim-treesitter",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -60,11 +63,32 @@ return function(activate)
             "lua",
             "luadoc",
             "markdown",
+            "markdown_inline",
             "printf",
             "toml",
             "vim",
             "vimdoc",
             "yaml",
+            "json",
+            "python",
+            "php",
+            "javascript",
+            "typescript",
+            "query",
+            "dockerfile",
+            "go",
+            "make",
+            "ini",
+            "html",
+            "css",
+            "scss",
+            "toml",
+            "vue",
+            "git_config",
+            "ssh_config",
+            "rasi",
+            "regex",
+            "terraform",
           },
 
           highlight = {
@@ -123,11 +147,6 @@ return function(activate)
 
         require("nvim-treesitter.configs").setup(options)
       end,
-    }
-  else
-    plugin = {
-      "nvim-treesitter/nvim-treesitter",
-      enabled = false,
     }
   end
 

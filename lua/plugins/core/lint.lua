@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "mfussenegger/nvim-lint",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -11,7 +14,16 @@ return function(activate)
         lint.linters_by_ft = {
           lua = { "luacheck" },
           bash = { "shellcheck" },
+          sh = { "shellcheck" },
           yaml = { "yamllint" },
+          json = { "jsonlint" },
+          markdown = { "markdownlint" },
+          ansible = { "ansible-lint" },
+          python = { "pylint" },
+          dockerfile = { "hadolint" },
+          toml = { "taplo" },
+          php = { "phpcs" },
+          terraform = { "tflint" },
         }
 
         lint.linters.luacheck.args = {
@@ -30,11 +42,6 @@ return function(activate)
           end,
         })
       end,
-    }
-  else
-    plugin = {
-      "mfussenegger/nvim-lint",
-      enabled = false,
     }
   end
 

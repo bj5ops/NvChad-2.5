@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "lewis6991/gitsigns.nvim",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -72,11 +75,6 @@ return function(activate)
 
         gitsigns.setup(options)
       end,
-    }
-  else
-    plugin = {
-      "lewis6991/gitsigns.nvim",
-      enabled = false,
     }
   end
 

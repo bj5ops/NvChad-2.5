@@ -19,10 +19,14 @@ return function(activate)
         local map = vim.keymap.set
         local opts = { noremap = true, silent = true }
 
-        map("n", "<C-A-Up>", Utils.cmd "LineDuplicate -1", opts)
-        map("n", "<C-A-Down>", Utils.cmd "LineDuplicate +1", opts)
-        map("v", "<C-A-Up>", Utils.cmd "VisualDuplicate -1", opts)
-        map("v", "<C-A-Down>", Utils.cmd "VisualDuplicate +1", opts)
+        -- map("n", "<C-A-Up>", Utils.cmd "LineDuplicate -1", opts)
+        map("n", "<C-A-k>", Utils.cmd "LineDuplicate -1", opts)
+        -- map("n", "<C-A-Down>", Utils.cmd "LineDuplicate +1", opts)
+        map("n", "<C-A-j>", Utils.cmd "LineDuplicate +1", opts)
+        -- map("v", "<C-A-Up>", Utils.cmd "VisualDuplicate -1", opts)
+        map("v", "<C-A-k>", Utils.cmd "VisualDuplicate -1", opts)
+        -- map("v", "<C-A-Down>", Utils.cmd "VisualDuplicate +1", opts)
+        map("v", "<C-A-j>", Utils.cmd "VisualDuplicate +1", opts)
       end,
     }
   end

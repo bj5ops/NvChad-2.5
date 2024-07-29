@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "rshkarin/mason-nvim-lint",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -37,11 +40,6 @@ return function(activate)
           automatic_installation = false,
         }
       end,
-    }
-  else
-    plugin = {
-      "rshkarin/mason-nvim-lint",
-      enabled = false,
     }
   end
 

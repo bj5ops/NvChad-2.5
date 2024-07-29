@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "zapling/mason-conform.nvim",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -14,11 +17,6 @@ return function(activate)
           ignore_install = {},
         }
       end,
-    }
-  else
-    plugin = {
-      "zapling/mason-conform.nvim",
-      enabled = false,
     }
   end
 

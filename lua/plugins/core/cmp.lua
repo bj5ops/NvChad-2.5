@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "hrsh7th/nvim-cmp",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -105,11 +108,6 @@ return function(activate)
           },
         })
       end,
-    }
-  else
-    plugin = {
-      "hrsh7th/nvim-cmp",
-      enabled = false,
     }
   end
 

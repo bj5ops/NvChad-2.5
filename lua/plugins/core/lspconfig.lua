@@ -1,5 +1,8 @@
 return function(activate)
-  local plugin = {}
+  local plugin = {
+    "neovim/nvim-lspconfig",
+    enabled = false,
+  }
 
   if activate then
     plugin = {
@@ -20,6 +23,22 @@ return function(activate)
           "bashls",
           "lua_ls",
           "yamlls",
+          "jsonls",
+          "pyright",
+          "intelephense",
+          "dockerls",
+          "docker_compose_language_service",
+          "ansiblels",
+          "marksman",
+          "tsserver",
+          "terraformls",
+          "html",
+          "cssls",
+          "css_variables",
+          "emmet_ls",
+          "volar",
+          "autotools_ls",
+          "tailwindcss",
         }
 
         -- list of servers configured with default config.
@@ -59,11 +78,6 @@ return function(activate)
           },
         }
       end,
-    }
-  else
-    plugin = {
-      "neovim/nvim-lspconfig",
-      enabled = false,
     }
   end
 
