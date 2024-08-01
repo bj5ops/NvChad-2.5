@@ -21,6 +21,7 @@ return function(activate)
         -- list of all servers configured.
         lspconfig.servers = {
           "lua_ls",
+          "intelephense",
         }
 
         -- list of servers configured with default config.
@@ -29,7 +30,6 @@ return function(activate)
           "yamlls",
           "jsonls",
           "pyright",
-          "intelephense",
           "dockerls",
           "docker_compose_language_service",
           "ansiblels",
@@ -78,6 +78,16 @@ return function(activate)
                 preloadFileSize = 10000,
               },
             },
+          },
+        }
+
+        lspconfig.intelephense.setup {
+          on_attach = on_attach,
+          on_init = on_init,
+          capabilities = capabilities,
+
+          init_options = {
+            globalStoragePath = os.getenv "HOME" .. "/.local/share/intelephense",
           },
         }
       end,
