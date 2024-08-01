@@ -48,22 +48,27 @@ return function(activate)
             "nvim-lua/plenary.nvim",
           },
           config = function()
+            require("codeium").setup {
+              enable_chat = true,
+            }
+          end,
+          keys = function()
+            -- local __Utils = require "utils"
             local map = vim.keymap.set
 
-            require("codeium").setup {
-              map("i", "<C-g>", function()
-                return vim.fn["codeium#Accept"]()
-              end, { expr = true, silent = true }),
-              map("i", "<C-;>", function()
-                return vim.fn["codeium#CycleCompletions"](1)
-              end, { expr = true, silent = true }),
-              map("i", "<C-,>", function()
-                return vim.fn["codeium#CycleCompletions"](-1)
-              end, { expr = true, silent = true }),
-              map("i", "<C-x>", function()
-                return vim.fn["codeium#Clear"]()
-              end, { expr = true, silent = true }),
-            }
+            map("i", "<C-g>", function()
+              return vim.fn["codeium#Accept"]()
+            end, { expr = true, silent = true })
+            map("i", "<C-;>", function()
+              return vim.fn["codeium#CycleCompletions"](1)
+            end, { expr = true, silent = true })
+            map("i", "<C-,>", function()
+              return vim.fn["codeium#CycleCompletions"](-1)
+            end, { expr = true, silent = true })
+            map("i", "<C-x>", function()
+              return vim.fn["codeium#Clear"]()
+            end, { expr = true, silent = true })
+            -- map("i", "<M-c>", __Utils.cmd "Codeium Chat", { expr = true, silent = true })
           end,
         },
         {

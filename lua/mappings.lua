@@ -17,13 +17,13 @@ map("n", "<c-j>", "<c-w><c-j>")
 map("n", "<c-k>", "<c-w><c-k>")
 map("n", "<c-l>", "<c-w><c-l>")
 
-map("n", "<leader><leader>xl", "<cmd>.lua<CR>", { desc = "execute the current line" })
-map("n", "<leader><leader>xs", "<cmd>source %<CR>", { desc = "execute the current file" })
+map("n", "<leader><leader>xl", __Utils.cmd ".lua", { desc = "execute the current line" })
+map("n", "<leader><leader>xs", __Utils.cmd "source %", { desc = "execute the current file" })
 
 -- Normally these are not good mappings, but I have left/right on my thumb
--- cluster, so navigating tabs is quite easy this way.
-map("n", "<left>", "gT")
-map("n", "<right>", "gt")
+-- -- cluster, so navigating tabs is quite easy this way.
+-- map("n", "<left>", "gT")
+-- map("n", "<right>", "gt")
 
 -- There are builtin keymaps for this now, but I like that it shows
 -- the float when I navigate to the error - so I override them.

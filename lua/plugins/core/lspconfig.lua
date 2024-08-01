@@ -20,8 +20,12 @@ return function(activate)
 
         -- list of all servers configured.
         lspconfig.servers = {
-          "bashls",
           "lua_ls",
+        }
+
+        -- list of servers configured with default config.
+        local default_servers = {
+          "bashls",
           "yamlls",
           "jsonls",
           "pyright",
@@ -39,10 +43,8 @@ return function(activate)
           "volar",
           "autotools_ls",
           "tailwindcss",
+          "taplo",
         }
-
-        -- list of servers configured with default config.
-        local default_servers = {}
 
         -- lsps with default config
         for _, lsp in ipairs(default_servers) do
@@ -53,6 +55,7 @@ return function(activate)
           }
         end
 
+        -- lsps with custom config lua_ls
         lspconfig.lua_ls.setup {
           on_attach = on_attach,
           on_init = on_init,

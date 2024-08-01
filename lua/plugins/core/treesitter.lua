@@ -89,6 +89,8 @@ return function(activate)
             "rasi",
             "regex",
             "terraform",
+            "dot",
+            "ini",
           },
 
           highlight = {

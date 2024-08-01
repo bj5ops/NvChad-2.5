@@ -24,6 +24,7 @@ return function(activate)
           toml = { "taplo" },
           php = { "phpcs" },
           terraform = { "tflint" },
+          zsh = { "shellcheck" },
         }
 
         lint.linters.luacheck.args = {
